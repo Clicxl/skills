@@ -1,12 +1,12 @@
 ---
 name: what-happened
-description: Summarise what happened in this session as a short spoken-style paragraph plus a status line, for reporting work to a manager or in a meeting.
+description: Summarise what happened in this session as a research-paper-style title, a short abstract, and a results list, for reporting work to a manager or in a meeting.
 disable-model-invocation: true
 ---
 
 # What Happened
 
-Report this **session** as a **paragraph** you could read aloud, then a **status line** for the facts behind it. The reader is a manager or CEO asking what work got done.
+Report this **session** like the opening of a research paper: a **title**, an **abstract** you could read aloud, then a **results** list for the facts behind it. The reader is a manager or CEO asking what work got done.
 
 Output goes to chat only. Write no files.
 
@@ -26,31 +26,42 @@ A **blocker** is an obstacle that stalled progress: review findings that must be
 3. Branch on what step 1 found:
    - **One work item**: continue to step 4.
    - **Several related work items** (they share an Issue or PR, or one exists because of the other): continue to step 4 as one report.
-   - **Several unrelated work items**: ask which to report, as a multi-select. Write one paragraph per pick.
+   - **Several unrelated work items**: ask which to report, as a multi-select. Write a title, abstract and results for each pick.
    - **No meaningful changes** (discussion or exploration only): ask whether to write a short report anyway. If yes, lead with what was learned or decided.
-4. Write the paragraph, then the status line.
+4. Write the title, the abstract, then the results.
 
-Done when every important change, failure, PR and blocker from step 1 appears in the paragraph or the status line.
+Done when every important change, blocker, PR and failure from step 1 appears in the abstract or the results.
 
-## Paragraph
+## Title
 
-4 to 5 sentences, close to 50 words. The limit is soft: stretch it when an important item would otherwise drop out.
+A paper-style noun phrase in Title Case, 3 to 4 words, in bold: "Login Timeout Window Extension". Plain English, no verb, no date, no issue number. Does not count toward the word limit.
+
+## Abstract
+
+3 to 4 sentences, 25 to 30 words. Exceed 30 words only when the main changes cannot fit in 3 to 4 sentences.
 
 - Subject-less, past tense: "Fixed the login timeout…", never "I fixed…" and never "The session fixed…".
-- Plain English. Name behaviour, not files.
-- Explain an uncommon technical term in a short parenthetical. Explanations do not count toward the word limit. Common terms (CI failed, migration failed) get no explanation.
+- Carry the main changes and any blocker.
 - A **resolved blocker** states the decision taken and why.
 - An **unresolved blocker** states what is needed from the user to resolve it.
-- Tests and proof: mention only failures and flags, with what failed and why. A run where everything passed gets no mention.
-- Flag code that changed with no tests run: "not yet tested".
+- Plain English. Name behaviour, not files.
+- Explain an uncommon technical term in a short parenthetical. Explanations do not count toward the word limit. Common terms (CI failed, migration failed) get no explanation.
+- Failures and "not yet tested" go in the results. They enter the abstract only when a failure is the main story of the session.
 
-## Status line
+## Results
 
-Under the paragraph. Does not count toward the word limit.
+A short labelled list under the abstract. Does not count toward the word limit. Leave out any line with nothing to report.
 
-`Status: <status> · Issue #<n> · PR #<n> · Flags: <flags>`
+```
+Status: <status>
+Issue: #<n> · PR: #<n>
+Flags: <flag>; <flag>
+```
 
-Include only the parts that exist.
+`Flags` names each test failure, CI failure and untested change in a few words. Give the details only when the user asks.
+
+- A run where everything passed gets no mention.
+- Code that changed with no tests run is flagged "not yet tested".
 
 Status for an Issue:
 
@@ -62,8 +73,13 @@ Status for an Issue:
 Status for a Review: **Approved**, **Changes requested** or **Commented**, plus the number of findings.
 
 ## Example
-```
-Fixed the mobile login timeout by extending the token refresh window (the time before a login expires). Opened a PR; review flagged a missing null check, which was fixed. CI failed on an unrelated payment test. The logout change has no tests yet. Merge is waiting on a second approval.
 
-Status: In progress · Issue #45 · PR #112 · Flags: CI failing (unrelated), logout change untested
+```
+**Login Timeout Window Extension**
+
+Extended the mobile login timeout so sessions stop expiring early. Review flagged a missing null check, which was fixed. Merge is waiting on a second approval.
+
+Status: In progress
+Issue: #45 · PR: #112
+Flags: CI failing (unrelated); logout change untested
 ```
