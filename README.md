@@ -15,7 +15,7 @@ The skills live in [`work/`](work/README.md):
 Run:
 
 ```
-npx skill add Clicxl/Prompt_Lib
+npx skills add Clicxl/skills
 ```
 
 ## Invoke
