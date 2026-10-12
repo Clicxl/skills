@@ -7,7 +7,7 @@ A library of explicit-invocation Agent Skills for day-to-day engineering work: w
 The skills live in [`work/`](work/README.md):
 
 - `create-issue`: draft or publish a tracker issue
-- `resolve-issue`: diagnose, fix, verify, and optionally deliver an issue
+- `resolve-issue`: grill, plan, test first, implement, review, and optionally ship a GitHub Issue
 - `what-happened`: summarise the current session as a short paragraph plus a status line, for reporting work in a meeting
 
 ## Install globally
