@@ -1,6 +1,6 @@
 # Prompt Lib
 
-A library of explicit-invocation Agent Skills for day-to-day engineering work (writing issues, resolving them, reporting what got done) and for thinking harder about your own beliefs. Each skill is a folder with a `SKILL.md`, invoked by name.
+A library of explicit-invocation Agent Skills for day-to-day engineering work (writing issues, resolving them, reporting what got done) and for thinking harder: stress-testing your beliefs and learning new topics. Each skill is a folder with a `SKILL.md`, invoked by name.
 
 ## Skills
 
@@ -13,6 +13,7 @@ The skills live in [`work/`](work/README.md):
 The thinking skills live in [`thinking/`](thinking/README.md):
 
 - `argue`: cross-examine a belief you hold until it survives a counter-argument or you concede its flaws
+- `feynman`: learn a topic by teaching it to a curious novice who questions you until you find your own gaps
 
 ## Install globally
 
